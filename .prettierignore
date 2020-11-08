@@ -1,0 +1,8 @@
+**/*.md
+lib
+es
+.umi
+.gitignore
+
+package.json
+tsconfig.json
