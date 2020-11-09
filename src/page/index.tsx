@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { Spin } from 'antd';
 
 export interface PageProps extends React.HTMLAttributes<HTMLDivElement> {
-  spinning?: boolean
+  spinning?: boolean;
 }
 
 const Page: React.FC<PageProps> = (props) => {

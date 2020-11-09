@@ -19,7 +19,9 @@ const Demo: React.FC<DemoProps> = () => {
         这是page组件， 会自动撑满屏幕
       </div>
 
-      <Button type="primary" onClick={handleMockLoading}>发送请求，设置页面加载状态</Button>
+      <Button type="primary" onClick={handleMockLoading}>
+        发送请求，设置页面加载状态
+      </Button>
     </Page>
   );
 };
