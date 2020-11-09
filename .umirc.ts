@@ -15,20 +15,15 @@ export default defineConfig({
     '/guide': [
       {
         title: '介绍',
-        children: ['guide/index.md']
-      }
+        children: ['guide/index.md'],
+      },
     ],
     '/component': [
       {
         title: '组件',
-        children: [
-          'page/index.md',
-          'white-space/index.md'
-        ]
-      }
-    ]
+        children: ['page/index.md', 'white-space/index.md', 'nav-bar/index.md'],
+      },
+    ],
   },
-  navs: [
-    null
-  ]
+  navs: [null],
 });

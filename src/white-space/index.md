@@ -3,8 +3,6 @@ title: WhiteSpace
 order: 2
 nav:
   path: '/component'
-  title: 组件
-  order: 2
 ---
 
 # WhiteSpace
