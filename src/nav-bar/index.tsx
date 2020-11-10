@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './index.less';
 import classNames from 'classnames';
-import arrowLeft from './images/arrow-left.png';
 
 export type NavBarProps = {
   left?: string | React.ReactNode;
@@ -27,7 +26,7 @@ const NavBar: React.FC<NavBarProps> = (props) => {
 };
 
 NavBar.defaultProps = {
-  left: <img className="eh-nav-bar-back" src={arrowLeft} alt="left" />,
+  left: <img className="eh-nav-bar-back" src={require('./images/arrow-left.png')} alt="left" />,
 };
 
 export default NavBar;
