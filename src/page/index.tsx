@@ -11,11 +11,9 @@ const Page: React.FC<PageProps> = (props) => {
   const { className, children, spinning, ...rest } = props;
 
   return (
-    <Spin spinning={spinning}>
-      <div {...rest} className={classnames(className, { 'eh-page': true })}>
-        {children}
-      </div>
-    </Spin>
+    <div {...rest} className={classnames(className, { 'eh-page': true })}>
+      <Spin spinning={spinning}>{children}</Spin>
+    </div>
   );
 };
 

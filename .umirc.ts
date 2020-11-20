@@ -11,6 +11,9 @@ export default defineConfig({
     ['import', { libraryName: 'antd', style: 'css' }, 'antd'],
     ['import', { libraryName: 'antd-mobile', style: 'css' }, 'antd-mobile'],
   ],
+  theme: {
+    '@color-primary': '#4A88EE',
+  },
   menus: {
     '/guide': [
       {
