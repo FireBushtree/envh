@@ -6,6 +6,8 @@ export interface DemoProps {}
 
 const Demo: React.FC<DemoProps> = () => {
   const [loading, setLoading] = React.useState(false);
+  const [showFixedPage, setShowFixedPage] = React.useState(false);
+
   const handleMockLoading = () => {
     setLoading(true);
     setTimeout(() => {
@@ -22,6 +24,15 @@ const Demo: React.FC<DemoProps> = () => {
       <Button type="primary" onClick={handleMockLoading}>
         发送请求，设置页面加载状态
       </Button>
+
+      <Button onClick={() => setShowFixedPage(true)} style={{ marginTop: 20 }} type="primary">
+        点击弹出 position: fixed 的 page
+      </Button>
+
+      <Page style={{ background: '#fff' }} fixed visible={showFixedPage}>
+        我是固定布局的容器， 我会从右边弹出来
+        <Button onClick={() => setShowFixedPage(false)}>点击我隐藏此布局</Button>
+      </Page>
     </Page>
   );
 };
