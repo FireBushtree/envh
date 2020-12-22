@@ -1,5 +1,6 @@
 import path from 'path';
 import { defineConfig } from 'dumi';
+const srcPath = `${path.resolve(__dirname)}/src`;
 
 export default defineConfig({
   // logo: '/images/logo.jpg',
@@ -8,8 +9,19 @@ export default defineConfig({
     '@/src': path.resolve(__dirname, './src'),
   },
   extraBabelPlugins: [
-    ['import', { libraryName: 'antd', style: 'css' }, 'antd'],
     ['import', { libraryName: 'antd-mobile', style: 'css' }, 'antd-mobile'],
+    [
+      'import',
+      {
+        libraryName: 'envh',
+        camel2DashComponentName: false,
+        libraryDirectory: '',
+        customStyleName: (name) => {
+          return `../style/index.less`;
+        },
+      },
+      'envh',
+    ],
   ],
   theme: {
     '@color-primary': '#4A88EE',
@@ -24,7 +36,7 @@ export default defineConfig({
     '/component': [
       {
         title: '组件',
-        children: ['page/index.md', 'white-space/index.md', 'nav-bar/index.md'],
+        children: ['nav-bar/demo/index.md'],
       },
     ],
   },

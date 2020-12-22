@@ -10,3 +10,5 @@ nav:
 # NavBar
 
 ## test
+
+<code src="./demo/index" />
