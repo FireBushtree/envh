@@ -1,6 +1,6 @@
 {
   "name": "envh",
-  "version": "1.0.5-snapshot",
+  "version": "1.0.7-snapshot",
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "Envcloud frontend accumulation",
