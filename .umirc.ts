@@ -15,7 +15,7 @@ export default defineConfig({
         libraryName: 'envh',
         libraryDirectory: '',
         customStyleName: (name) => {
-          return `../style/index.less`;
+          return `envh/${name}/style/index.less`;
         },
       },
       'envh',
