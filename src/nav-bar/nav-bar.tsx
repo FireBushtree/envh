@@ -1,29 +1,31 @@
-import * as React from 'react';
+import React from 'react';
+import classnames from 'classnames';
 
-export interface NavBarProps {}
-
-export interface NavBarState {
-  name: string;
+export interface NavBarProps {
+  left?: React.ReactNode | string;
+  right?: React.ReactNode | string;
+  onLeftClick?: () => any;
+  onRightClick?: () => any;
 }
 
-class NavBar extends React.Component<NavBarProps, NavBarState> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-    };
-  }
+const NavBar: React.FC<NavBarProps & React.HTMLAttributes<HTMLDivElement>> = (props) => {
+  const { left, right, onLeftClick, onRightClick, children, className, ...rest } = props;
 
-  render() {
-    const { name } = this.state;
-
-    return (
-      <div className="eh-nav-bar">
-        123
-        {name}
+  return (
+    <div {...rest} className={classnames(className, 'eh-nav-bar')}>
+      <div className="eh-nav-bar-action" onClick={onLeftClick}>
+        {left}
       </div>
-    );
-  }
-}
+      <div className="eh-nav-bar-content">{children}</div>
+      <div className="eh-nav-bar-action" onClick={onRightClick}>
+        {right}
+      </div>
+    </div>
+  );
+};
+
+NavBar.defaultProps = {
+  left: <img className="eh-nav-bar-back" src={require('./images/arrow-left.png')} alt="left" />,
+};
 
 export default NavBar;
