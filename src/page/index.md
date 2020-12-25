@@ -1,12 +1,13 @@
 ---
-title: NavBar
+title: Page
 nav:
   path: '/component'
   title: 组件
 ---
 
-# NavBar
+# Page
 
-## test
+## 基本使用
 
 <code src="./demo/index" />
+

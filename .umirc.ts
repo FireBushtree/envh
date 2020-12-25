@@ -31,7 +31,7 @@ export default defineConfig({
     '/component': [
       {
         title: '组件',
-        children: ['nav-bar/index.md'],
+        children: ['nav-bar/index.md', 'page/index.md'],
       },
     ],
   },

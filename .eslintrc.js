@@ -21,6 +21,7 @@ module.exports = {
     expect: true,
   },
   rules: {
+    'react/prefer-stateless-function': [0],
     'global-require': [0],
     'object-curly-newline': [0],
     'import/no-extraneous-dependencies': [0],
