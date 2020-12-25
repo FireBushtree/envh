@@ -6,14 +6,6 @@ export default {
   cjs: 'babel',
   extraBabelPlugins: [
     [
-      'import',
-      {
-        libraryName: 'antd',
-        libraryDirectory: 'es',
-        style: true,
-      },
-    ],
-    [
       'module-resolver',
       {
         root: ['./src'],

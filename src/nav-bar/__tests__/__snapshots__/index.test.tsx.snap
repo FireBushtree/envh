@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBar /> should render default 1`] = `
+<div>
+  <div
+    class="eh-nav-bar"
+  >
+    <div
+      class="eh-nav-bar-action"
+    >
+      <img
+        alt="left"
+        class="eh-nav-bar-back"
+        src="[object Object]"
+      />
+    </div>
+    <div
+      class="eh-nav-bar-content"
+    >
+      nav-bar
+    </div>
+    <div
+      class="eh-nav-bar-action"
+    />
+  </div>
+</div>
+`;

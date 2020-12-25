@@ -15,6 +15,11 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
+  globals: {
+    describe: true,
+    test: true,
+    expect: true,
+  },
   rules: {
     'global-require': [0],
     'object-curly-newline': [0],
