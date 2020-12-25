@@ -21,6 +21,7 @@ module.exports = {
     expect: true,
   },
   rules: {
+    'class-methods-use-this': [0],
     'react/prefer-stateless-function': [0],
     'global-require': [0],
     'object-curly-newline': [0],
