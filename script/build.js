@@ -8,12 +8,12 @@ const typeRootDir = path.resolve(__dirname, `../${TYPEINGS_FOLDER}`);
 const libRootDir = path.resolve(__dirname, '../es');
 const esRootDir = path.resolve(__dirname, '../lib');
 
-const remove = async (filePath, name) => {
+const remove = async (filePath, name, fileType) => {
   await rimraf(filePath, {}, (error) => {
     if (error) {
       console.log(error);
     }
-    console.log(`remove ${name} demo folder success`);
+    console.log(`remove ${name} ${fileType} folder success`);
   });
 };
 
@@ -58,16 +58,24 @@ const getTypingFiles = () => {
   await execa('npx father-build');
 
   // 5. 去除打包后的demo文件
-  await remove('lib/**/demo', 'lib');
-  await remove('es/**/demo', 'es');
+  await remove('lib/**/demo', 'lib', 'demo');
+  await remove('es/**/demo', 'es', 'demo');
 
-  // 6. 替换打包后的声明文件
+  // 6. 去除打包后的测试文件
+  await remove('lib/**/__tests__', 'lib', '__test__');
+  await remove('es/**/__tests__', 'es', '__test__');
+
+  // 7. 去除多余的css文件
+  await remove('lib/global.less', 'lib', 'global.less');
+  await remove('es/global.less', 'es', 'global.less');
+
+  // 8. 替换打包后的声明文件
   const typingFiles = getTypingFiles();
   typingFiles.forEach((item) => {
     fs.copyFileSync(`${typeRootDir}/${item}`, `${libRootDir}/${item}`);
     fs.copyFileSync(`${typeRootDir}/${item}`, `${esRootDir}/${item}`);
   });
 
-  // 7. 清除声明文件夹的包
+  // 9. 清除声明文件夹的包
   rimraf(TYPEINGS_FOLDER, {}, () => {});
 })();

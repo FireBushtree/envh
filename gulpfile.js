@@ -9,7 +9,7 @@ const paths = {
     lib: 'lib',
     es: 'es',
   },
-  style: 'src/**/*.less',
+  style: ['src/**/*.less', '!src/global.less'],
   styleScripts: ['lib/**/*.js'],
 };
 
