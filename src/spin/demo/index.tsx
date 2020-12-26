@@ -7,9 +7,14 @@ const SpinDemo: React.FC = () => (
       <NavBar>nav-bar</NavBar>
     </Spin>
 
-    <Spin>
-      <div>nav-bar</div>
-    </Spin>
+    <div style={{ display: 'flex', height: 50, alignItems: 'center' }}>
+      <Spin style={{ flex: 1, fontSize: 18, textAlign: 'center' }}>
+        <div>left</div>
+      </Spin>
+      <Spin style={{ flex: 1, fontSize: 18, textAlign: 'center' }}>
+        <div>right</div>
+      </Spin>
+    </div>
   </div>
 );
 
