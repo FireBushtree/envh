@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spin> render default should spinning 1`] = `
+<div>
+  <div
+    class="eh-spin is-spinning"
+  >
+    <div
+      class="eh-spin-roller"
+    >
+      <div />
+    </div>
+    <div
+      class="eh-spin-mask"
+    >
+      spin
+    </div>
+  </div>
+</div>
+`;
