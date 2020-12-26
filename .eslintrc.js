@@ -21,6 +21,7 @@ module.exports = {
     expect: true,
   },
   rules: {
+    'react/static-property-placement': [0],
     'class-methods-use-this': [0],
     'react/prefer-stateless-function': [0],
     'global-require': [0],

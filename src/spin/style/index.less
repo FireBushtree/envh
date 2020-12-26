@@ -2,21 +2,33 @@
 
 .eh-spin {
   position: relative;
-  pointer-events: none;
 
   &-mask {
     z-index: 1;
     position: relative;
     background: #fff;
-    opacity: 0.5;
+    transition: all 0.3s;
+    opacity: 1;
+  }
+
+  &.is-spinning {
+    pointer-events: none;
+
+    .eh-spin-roller {
+      display: block;
+    }
+
+    .eh-spin-mask {
+      opacity: 0.5;
+    }
   }
 }
 
-@container-length: 45px;
+@container-length: 30px;
 @inner-length: @container-length * 0.85;
 @border-length: 2px;
 
-.eh-spin-roller{
+.eh-spin-roller {
   z-index: 2;
   left: 0;
   top: 0;
@@ -27,6 +39,8 @@
   position: absolute;
   width: @container-length;
   height: @container-length;
+  display: none;
+  transition: all 0.3s;
 
   div {
     box-sizing: border-box;
