@@ -1,3 +1,24 @@
+@wrapClassNamePrefix: .eh-page-wrap;
+
+@{wrapClassNamePrefix} {
+  transition: all 0.3s;
+}
+
+@{wrapClassNamePrefix}@{wrapClassNamePrefix}__fixed {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 100vw;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+
+@{wrapClassNamePrefix}__fixed@{wrapClassNamePrefix}__visible {
+  left: 0;
+}
+
 .eh-page {
+  width: 100vw;
   height: 100vh;
 }

@@ -33,7 +33,8 @@ class Spin extends React.Component<SpinProps, SpinState> {
         })}
       >
         {this.renderRoller()}
-        <div className="eh-spin-mask">{children}</div>
+        <div className="eh-spin-mask" />
+        <div className="eh-spin-children">{children}</div>
       </div>
     );
   }

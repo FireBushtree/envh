@@ -7,6 +7,8 @@ import { SpinProps } from '../spin/spin';
 export interface PageProps {
   wrapClassName?: string;
   wrapStyle?: React.CSSProperties;
+  fixed?: boolean;
+  visible?: boolean;
 }
 
 export interface PageState {}
@@ -14,13 +16,20 @@ export interface PageState {}
 class Page extends Component<PageProps & SpinProps, PageState> {
   static defaultProps = {
     spinning: false,
+    fixed: false,
   };
 
   render() {
-    const { children, wrapClassName, className, style, ...rest } = this.props;
+    const { children, wrapClassName, className, style, fixed, visible, ...rest } = this.props;
 
     return (
-      <Spin className={classnames('eh-page-wrap', wrapClassName)} {...rest}>
+      <Spin
+        className={classnames('eh-page-wrap', wrapClassName, {
+          'eh-page-wrap__fixed': fixed,
+          'eh-page-wrap__visible': visible,
+        })}
+        {...rest}
+      >
         <div style={style} className={classnames('eh-page', className)}>
           {children}
         </div>
