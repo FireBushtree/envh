@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Spin> render default should spinning 1`] = `
+exports[`<Page /> should render default and default position is relative 1`] = `
 <div>
   <div
-    class="eh-spin is-spinning"
+    class="eh-spin eh-page-wrap"
   >
     <div
       class="eh-spin-roller"
@@ -16,7 +16,11 @@ exports[`<Spin> render default should spinning 1`] = `
     <div
       class="eh-spin-children"
     >
-      spin
+      <div
+        class="eh-page"
+      >
+        innerHTML
+      </div>
     </div>
   </div>
 </div>
