@@ -83,7 +83,7 @@ const PageDemo: React.FC = () => {
 
       <Page fixed visible={showNextPage}>
         <NavBar
-          onClick={() => {
+          onLeftClick={() => {
             setCurrentTrash('');
             setShowNextPage(false);
           }}
