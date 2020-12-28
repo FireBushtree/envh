@@ -21,6 +21,7 @@ module.exports = {
     expect: true,
   },
   rules: {
+    'react/no-array-index-key': [0],
     'react/static-property-placement': [0],
     'class-methods-use-this': [0],
     'react/prefer-stateless-function': [0],
