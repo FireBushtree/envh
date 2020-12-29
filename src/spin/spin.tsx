@@ -29,7 +29,8 @@ class Spin extends React.Component<SpinProps, SpinState> {
       <div
         style={style}
         className={classnames('eh-spin', className, {
-          'is-spinning': spinning,
+          'eh-spin-spinning': spinning,
+          'eh-spin-inline': !children,
         })}
       >
         {this.renderRoller()}

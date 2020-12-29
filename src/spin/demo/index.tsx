@@ -20,6 +20,7 @@ const SpinDemo: React.FC = () => {
       </div>
 
       <div style={{ height: 6, background: '#a0d911' }} />
+
       <div>
         <button
           type="button"
@@ -32,6 +33,13 @@ const SpinDemo: React.FC = () => {
         </button>
 
         <Spin spinning={isSpinning}>我在spinning</Spin>
+      </div>
+
+      <div style={{ height: 6, background: '#a0d911' }} />
+
+      <div>
+        <Spin />
+        单独使用
       </div>
     </div>
   );

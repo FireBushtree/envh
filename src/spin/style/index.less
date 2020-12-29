@@ -1,5 +1,9 @@
 @import '../../style/color.less';
 
+@container-length: 24px;
+@inner-length: @container-length * 0.85;
+@border-length: 2px;
+
 .eh-spin {
   position: relative;
 
@@ -21,7 +25,13 @@
     position: relative;
   }
 
-  &.is-spinning {
+  &.eh-spin-inline {
+    display: inline-block;
+    width: @container-length;
+    height: @container-length ;
+  }
+
+  &.eh-spin-spinning {
     pointer-events: none;
 
     .eh-spin-roller {
@@ -34,10 +44,6 @@
     }
   }
 }
-
-@container-length: 30px;
-@inner-length: @container-length * 0.85;
-@border-length: 2px;
 
 .eh-spin-roller {
   z-index: 3;

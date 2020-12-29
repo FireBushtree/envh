@@ -3,7 +3,7 @@
 exports[`<Spin> render default should spinning 1`] = `
 <div>
   <div
-    class="eh-spin is-spinning"
+    class="eh-spin eh-spin-spinning"
   >
     <div
       class="eh-spin-roller"
