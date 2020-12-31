@@ -11,7 +11,7 @@ const ScrollDemo: React.FC = () => {
       setTimeout(() => {
         const newList = new Array(10).fill(Math.random());
         setList([...list, ...newList]);
-        resolve();
+        resolve(newList);
       }, 1000);
     });
 
