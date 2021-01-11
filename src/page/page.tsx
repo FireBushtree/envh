@@ -30,7 +30,10 @@ class Page extends Component<PageProps & SpinProps, PageState> {
         })}
         {...rest}
       >
-        <div style={style} className={classnames('eh-page', className)}>
+        <div
+          style={{ height: window.innerHeight, ...style }}
+          className={classnames('eh-page', className)}
+        >
           {children}
         </div>
       </Spin>
