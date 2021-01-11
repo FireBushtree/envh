@@ -63,7 +63,6 @@ const ScrollDemo: React.FC = () => {
           }}
           requestDone={requestDone}
           isRequestingMore={loading}
-          style={{ height: '100%', overflow: 'hidden' }}
         >
           {dataSource.map((item, index) => (
             <div style={{ padding: '10px' }} key={index}>

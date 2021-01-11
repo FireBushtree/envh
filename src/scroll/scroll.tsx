@@ -1,4 +1,4 @@
-import React, { Component, RefObject } from 'react';
+import React, { Component } from 'react';
 import Bscroll, { Options as BetterScrollOptions } from 'better-scroll';
 import classnames from 'classnames';
 import Spin from '../spin';
@@ -22,18 +22,13 @@ export default class Scroll extends Component<
 
   waitPullingUpCallback: boolean;
 
-  wrapRef: RefObject<HTMLDivElement>;
+  wrapRef: HTMLDivElement;
 
   static defaultProps = {
     requestDone: false,
     hasRequestText: true,
     isRequestingMore: false,
   };
-
-  constructor(props) {
-    super(props);
-    this.wrapRef = React.createRef();
-  }
 
   componentDidMount() {
     this.initScroll();
@@ -48,13 +43,13 @@ export default class Scroll extends Component<
   }
 
   initScroll() {
-    if (!this.wrapRef.current) {
+    if (!this.wrapRef) {
       return;
     }
 
     const { betterScrollOptions, pullup, pulldown } = this.props;
 
-    const scroll = new Bscroll(this.wrapRef.current, {
+    const scroll = new Bscroll(this.wrapRef, {
       click: true,
       pullUpLoad: true,
       ...betterScrollOptions,
@@ -111,7 +106,13 @@ export default class Scroll extends Component<
     } = this.props;
 
     return (
-      <div className={classnames(className, 'eh-scroll')} ref={this.wrapRef} {...rest}>
+      <div
+        className={classnames(className, 'eh-scroll')}
+        ref={(ref) => {
+          this.wrapRef = ref;
+        }}
+        {...rest}
+      >
         <div>
           {children}
 
