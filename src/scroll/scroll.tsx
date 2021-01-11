@@ -5,10 +5,11 @@ import Spin from '../spin';
 
 export interface ScrollProps {
   betterScrollOptions?: BetterScrollOptions;
-  hasRequestText?: boolean;
-  requestMore?: boolean;
-  isRequestingMore?: boolean;
-  pullingUp?: () => any;
+  hasRequestText?: boolean; // 是否有加载文字
+  requestDone?: boolean; // 是否加载全部数据
+  isRequestingMore?: boolean; // 是否正在加载数据
+  pullup?: () => any;
+  pulldown?: () => any;
 }
 
 export interface ScrollState {}
@@ -24,7 +25,7 @@ export default class Scroll extends Component<
   wrapRef: RefObject<HTMLDivElement>;
 
   static defaultProps = {
-    requestMore: true,
+    requestDone: false,
     hasRequestText: true,
     isRequestingMore: false,
   };
@@ -35,11 +36,23 @@ export default class Scroll extends Component<
   }
 
   componentDidMount() {
+    this.initScroll();
+  }
+
+  componentDidUpdate(props) {
+    const { children } = this.props;
+
+    if (props.children !== children) {
+      this.scroll?.refresh();
+    }
+  }
+
+  initScroll() {
     if (!this.wrapRef.current) {
       return;
     }
 
-    const { betterScrollOptions } = this.props;
+    const { betterScrollOptions, pullup, pulldown } = this.props;
 
     const scroll = new Bscroll(this.wrapRef.current, {
       click: true,
@@ -48,84 +61,52 @@ export default class Scroll extends Component<
     });
 
     this.scroll = scroll;
-    this.setPullingUpEvent();
-  }
 
-  componentDidUpdate(props) {
-    const { children, pullingUp, requestMore } = this.props;
-
-    if (props.children !== children) {
-      this.scroll?.refresh();
+    // 是否派发滚动到底部事件，用于上拉加载
+    if (pullup) {
+      this.scroll.on('scrollEnd', () => {
+        // 滚动到底部
+        if (this.scroll.y <= this.scroll.maxScrollY + 50) {
+          pullup();
+        }
+      });
     }
 
-    if (!this.scroll) {
-      return;
+    // 是否派发顶部下拉事件，用于下拉刷新
+    if (pulldown) {
+      this.scroll.on('touchend', (pos) => {
+        // 下拉动作
+        if (pos.y > 50) {
+          pulldown();
+        }
+      });
     }
-
-    if (props.pullingUp !== pullingUp) {
-      this.setPullingUpEvent();
-    }
-
-    if (requestMore) {
-      this.scroll?.finishPullUp();
-    }
-  }
-
-  setPullingUpEvent() {
-    if (!this.scroll) {
-      return;
-    }
-
-    const { pullingUp, requestMore } = this.props;
-
-    if (!pullingUp) {
-      return;
-    }
-
-    const callFunc = async () => {
-      if (!requestMore || this.waitPullingUpCallback) {
-        return;
-      }
-
-      this.waitPullingUpCallback = true;
-      await pullingUp();
-      this.waitPullingUpCallback = false;
-      this.scroll?.finishPullUp();
-      this.scroll?.refresh();
-    };
-
-    this.scroll.off('pullingUp');
-    this.scroll.on('pullingUp', callFunc);
   }
 
   renderLoadingText() {
-    const { requestMore, isRequestingMore } = this.props;
+    const { requestDone } = this.props;
 
-    if (!requestMore) {
-      return <div>已加载全部数据</div>;
-    }
+    return (
+      <div className="eh-scroll-loading__done">
+        <span className="eh-scroll-loading__done-text">我已经到底了</span>
+      </div>
+    );
+    // if (requestDone) {
+    // }
 
-    if (isRequestingMore) {
-      return (
-        <div className="eh-scroll-loading-text-wrap">
-          <Spin />
-          <span className="eh-scroll-loading-text">数据加载中</span>
-        </div>
-      );
-    }
-
-    return <div className="eh-scroll-load-more-text">上拉加载更多数据</div>;
+    // return <Spin />;
   }
 
   render() {
     const {
       children,
       className,
-      pullingUp,
-      isRequestingMore,
-      requestMore,
+      pullup,
+      pulldown,
       hasRequestText,
+      requestDone,
       betterScrollOptions,
+      isRequestingMore,
       ...rest
     } = this.props;
 
