@@ -86,15 +86,15 @@ export default class Scroll extends Component<
   renderLoadingText() {
     const { requestDone } = this.props;
 
-    return (
-      <div className="eh-scroll-loading__done">
-        <span className="eh-scroll-loading__done-text">我已经到底了</span>
-      </div>
-    );
-    // if (requestDone) {
-    // }
+    if (requestDone) {
+      return (
+        <div className="eh-scroll-loading__done">
+          <span className="eh-scroll-loading__done-text">我已经到底了</span>
+        </div>
+      );
+    }
 
-    // return <Spin />;
+    return <Spin />;
   }
 
   render() {
