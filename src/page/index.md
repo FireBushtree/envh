@@ -15,6 +15,7 @@ nav:
 
 | 参数 | 说明 | 类型 | 默认值 | 版本 |
 | :--- | :--- | :--- | :--- | :--- |
+| spinning | 控制当前页面是否为加载状态 | `boolean` | false | |
 | wrapClassName | 用来控制最外层包裹元素的`class` | `string` | - | |
 | wrapStyle | 用来控制最外层包裹元素的`style` | `React.CSSProperties` | - | |
 | fixed | 控制元素的`position`是否`fixed`， 一般与`visible`配合使用 | `boolean` | false | |

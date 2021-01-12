@@ -7,6 +7,7 @@ nav:
 
 # Spin
 
+用于页面和区块的加载中状态。
 
 ## 代码示例
 <code src="./demo/index" />
