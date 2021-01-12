@@ -7,7 +7,6 @@ export interface ScrollProps {
   betterScrollOptions?: BetterScrollOptions;
   hasRequestText?: boolean; // 是否有加载文字
   requestDone?: boolean; // 是否加载全部数据
-  isRequestingMore?: boolean; // 是否正在加载数据
   pullup?: () => any;
   pulldown?: () => any;
 }
@@ -27,7 +26,6 @@ export default class Scroll extends Component<
   static defaultProps = {
     requestDone: false,
     hasRequestText: true,
-    isRequestingMore: false,
   };
 
   componentDidMount() {
@@ -101,7 +99,6 @@ export default class Scroll extends Component<
       hasRequestText,
       requestDone,
       betterScrollOptions,
-      isRequestingMore,
       ...rest
     } = this.props;
 
