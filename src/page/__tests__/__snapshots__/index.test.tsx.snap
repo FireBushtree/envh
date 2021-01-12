@@ -18,6 +18,7 @@ exports[`<Page /> should render default and default position is relative 1`] = `
     >
       <div
         class="eh-page"
+        style="height: 768px;"
       >
         innerHTML
       </div>

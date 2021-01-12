@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Scroll /> should render default 1`] = `
+<div>
+  <div
+    class="eh-scroll"
+  >
+    <div>
+      <div
+        class="eh-scroll-loading-container"
+      >
+        <div
+          class="eh-spin eh-spin-spinning eh-spin-inline"
+        >
+          <div
+            class="eh-spin-roller"
+          >
+            <div />
+          </div>
+          <div
+            class="eh-spin-mask"
+          />
+          <div
+            class="eh-spin-children"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
