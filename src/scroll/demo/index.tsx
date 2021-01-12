@@ -34,7 +34,6 @@ const requestUser = (page) =>
 const ScrollDemo: React.FC = () => {
   // eslint-disable-next-line prefer-const
   let [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
   const [dataSource, setDataSource] = React.useState<Array<User>>([]);
 
   const requestDone = dataSource.length >= 50;
@@ -45,9 +44,7 @@ const ScrollDemo: React.FC = () => {
     }
 
     (async () => {
-      setLoading(true);
       const res = await requestUser(page);
-      setLoading(false);
       const newDataSource = [...dataSource, ...res];
       setDataSource(newDataSource);
     })();
@@ -62,7 +59,6 @@ const ScrollDemo: React.FC = () => {
             setPage((page += 1));
           }}
           requestDone={requestDone}
-          isRequestingMore={loading}
         >
           {dataSource.map((item, index) => (
             <div style={{ padding: '10px' }} key={index}>
