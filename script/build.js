@@ -40,6 +40,11 @@ const getTypingFiles = () => {
 };
 
 (async () => {
+  // 去除上一次的打包文件
+  await rimraf(TYPEINGS_FOLDER, {}, () => {});
+  await rimraf('lib', {}, () => {});
+  await rimraf('es', {}, () => {});
+
   // 1. 使用ttypescript 生成 .d.ts文件
   console.log('start generate declaration folder');
   await execa(`npx ttsc --outDir ${TYPEINGS_FOLDER}`);

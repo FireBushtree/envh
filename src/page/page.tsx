@@ -11,15 +11,42 @@ export interface PageProps {
   visible?: boolean;
 }
 
-export interface PageState {}
+export interface PageState {
+  height: number;
+}
 
 class Page extends Component<PageProps & SpinProps, PageState> {
+  resizePageBind: (e) => any;
+
   static defaultProps = {
     spinning: false,
     fixed: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      height: 0,
+    };
+    this.resizePageBind = this.resizePage.bind(this);
+  }
+
+  componentDidMount() {
+    this.resizePage();
+
+    window.addEventListener('resize', this.resizePageBind);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizePageBind);
+  }
+
+  resizePage() {
+    this.setState({ height: window.innerHeight });
+  }
+
   render() {
+    const { height } = this.state;
     const { children, wrapClassName, className, style, fixed, visible, ...rest } = this.props;
 
     return (
@@ -30,10 +57,7 @@ class Page extends Component<PageProps & SpinProps, PageState> {
         })}
         {...rest}
       >
-        <div
-          style={{ height: window.innerHeight, ...style }}
-          className={classnames('eh-page', className)}
-        >
+        <div style={{ height, ...style }} className={classnames('eh-page', className)}>
           {children}
         </div>
       </Spin>
