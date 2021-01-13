@@ -36,7 +36,10 @@ export default class Scroll extends Component<
     const { children } = this.props;
 
     if (props.children !== children) {
-      this.scroll?.refresh();
+      // 当children更新后， dom会一部更新， 所以需要setTimeout
+      setTimeout(() => {
+        this.scroll?.refresh();
+      }, 0);
     }
   }
 
