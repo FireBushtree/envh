@@ -1,6 +1,6 @@
 {
   "name": "envh",
-  "version": "1.0.16-snapshot",
+  "version": "1.0.17-snapshot",
   "main": "lib/index.js",
   "module": "es/index.js",
   "description": "Envcloud frontend accumulation",
@@ -40,7 +40,6 @@
     "@types/better-scroll": "^1.12.3",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.19",
-    "@types/md5": "^2.2.0",
     "@types/react": "^16.9.49",
     "@types/testing-library__react": "^10.2.0",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
