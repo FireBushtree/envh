@@ -23,7 +23,20 @@ class Marker extends Component<MarkerProps, MarkerState> {
     this.init();
   }
 
+  componentDidUpdate() {
+    this.init();
+  }
+
+  destroy() {
+    const { map } = this.props;
+    if (this.marker) {
+      map.removeOverlay(this.marker);
+      this.marker = null;
+    }
+  }
+
   init() {
+    this.destroy();
     const { map, lng, lat, onDragend, children, jump } = this.props;
 
     if (children) {

@@ -27,7 +27,7 @@ const BMapDemo: React.FC = () => {
         </button>
       </div>
       <BMap center={center} style={{ flex: 1 }}>
-        <Marker lng={120.591693} lat={31.304737} onDragend={() => {}} />
+        <Marker lng={center?.lng} lat={center?.lat} onDragend={() => {}} />
         <Marker lng={120.591693} lat={31.304737} jump onDragend={() => {}}>
           <img style={{ width: 32 }} src={require('./icon-location.png')} alt="location" />
         </Marker>
