@@ -43,7 +43,9 @@ class InternalBMap extends React.Component<InternalBMapProps, InternalBMapState>
   componentDidUpdate(prevProps) {
     const { center } = this.props;
 
-    if (prevProps.center !== center) {
+    // fix [bug](https://github.com/FireBushtree/envh/issues/3)
+    // maybe is requesting bmap script, center has changed, will get Error.
+    if (prevProps.center !== center && this.mapInstance) {
       const { lng, lat } = center;
       this.mapInstance.customSetMapCenter(lng, lat);
     }
